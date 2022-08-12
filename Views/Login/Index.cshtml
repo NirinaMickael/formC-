@@ -1,0 +1,16 @@
+@{
+    ViewData["Title"] = "Greet";
+}
+@model Cours.Models.IUserViewModel;
+<div class="text-center container-fluid">
+    @using (Html.BeginForm())
+    {
+        @Html.Label("Email");
+        @Html.TextBox("email",Model.Email)
+        @Html.Label("Password");
+        @Html.TextBox("password",Model.Password)
+        <input type="submit" value="Login" />
+        <a class="btn btn-primary" asp-controller="Register" asp-action="Index">Register</a>
+    }
+    <p class="text-danger">@ViewBag.Message</p>
+</div>

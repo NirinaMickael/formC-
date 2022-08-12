@@ -1,0 +1,35 @@
+@{
+    ViewData["Title"] = "Register";
+}
+@model Cours.Models.IUserViewModel;
+<div class="container-fluid">
+    <form asp-action="Index" asp-controller="Register" method="post" class="form  row justify-content-center">
+        <div class="w-50 m-2 row">
+            @Html.LabelFor(model=>model.Name,new{@class="col-md-4"})
+            @Html.TextBoxFor(model=>model.Name,new{@class="col-md-8 form-controll"})
+            @Html.ValidationMessageFor(model => model.Name,"", new { @class = "text-danger" })
+        </div>
+
+        <div class="w-50 m-2 row">
+            @Html.LabelFor(model=>model.Email,new{@class="col-md-4"})
+            @Html.TextBoxFor(model=>model.Email,new{@class="col-md-8 form-controll",@type="email"})
+            @Html.ValidationMessageFor(model => model.Email,"", new { @class = "text-danger" })
+        </div>
+
+        <div class="w-50 m-2 row">
+            @Html.LabelFor(model=>model.Password,new{@class="col-md-4"})
+            @Html.TextBoxFor(model=>model.Password,new{@class="col-md-8 form-controll",@type="password"})
+            @Html.ValidationMessageFor(model => model.Password,"", new { @class = "text-danger" })
+        </div>
+        <div class="w-50 m-2 row justify-content-center">
+            <button class="btn btn-success col-md-2 " type="submit">Register</button>
+            <a class="btn btn-primary col-md-2 " asp-controller="login" asp-action="Index">Login</a>
+        </div>
+        @{
+            @if (ViewBag.tester != null)
+            {
+                <p @(ViewBag.tester ? "class=text-danger " : "class=text-success")>@ViewBag.message</p>
+            }
+        }
+    </form>
+</div>
